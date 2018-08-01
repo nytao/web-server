@@ -18,7 +18,7 @@ app.set('view engine', 'hbs');
 
 app.use((req, res, next) => {
   var now = new Date().toString();
-  var log = `${now}: ${req.method} ${req.url}`;
+  var log = `${now}: ${req.method} ${req.url} - ${req.connection.remoteAddress} - ${req.headers['user-agent']}`;
   console.log(log);
   fs.appendFile('log.txt', log + os.EOL, (err) => {
     if (err) {
@@ -53,8 +53,8 @@ app.get('/about', (req, res) => {
   });
 });
 
-app.get((req, res) => {
-
+app.get('/projects', (req, res) => {
+  res.render('projects', {});
 })
 
 app.get('/bad', (req, res) => {
