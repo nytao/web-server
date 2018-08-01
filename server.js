@@ -5,7 +5,7 @@ const os = require('os');
 
 const app = express();
 
-var port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 
 hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerHelper('getCurrentYear', () => {
